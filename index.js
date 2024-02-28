@@ -16,7 +16,6 @@ const PORT = process.env.PORT || 8000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-// Serve static files (optional, depending on your project structure)
 app.use(express.static(path.join(__dirname, "public")));
 
 // Handle form submissions
@@ -24,20 +23,17 @@ app.post("/api/contact", (req, res) => {
   // Extract form data from the request body
   const { name, email, subject, message } = req.body;
 
-  // Do something with the form data (e.g., send an email, store in a database)
-
-  // Send email
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "sealvenki@gmail.com", // your email
-      pass: "hpuv xape ilsd bwgr", // your email password
+      user: "sealvenki@gmail.com",
+      pass: "hpuv xape ilsd bwgr",
     },
   });
 
   const mailOptions = {
     // from: "sealvenki@gmail.com",
-    to: "sealvenki@gmail.com", // recipient's email
+    to: "sealvenki@gmail.com",
     subject: `New Contact Form Submission - ${subject}`,
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
